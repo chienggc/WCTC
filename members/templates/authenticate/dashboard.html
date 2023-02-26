@@ -1,0 +1,316 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<head>
+{% csrf_token %}
+    {% load static %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SB Admin 2 - Dashboard</title>
+
+    <!-- Custom fonts for this template-->
+
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="m-0 font-weight-bold text-primary">Dashboard</h1>
+                    </div>
+
+                    <!-- Content Row -->
+                    <div class="row">
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-4 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                Earned Point</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">℗{{ latest_point }}</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-patch-plus" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M8 5.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 .5-.5z"/>
+  <path d="m10.273 2.513-.921-.944.715-.698.622.637.89-.011a2.89 2.89 0 0 1 2.924 2.924l-.01.89.636.622a2.89 2.89 0 0 1 0 4.134l-.637.622.011.89a2.89 2.89 0 0 1-2.924 2.924l-.89-.01-.622.636a2.89 2.89 0 0 1-4.134 0l-.622-.637-.89.011a2.89 2.89 0 0 1-2.924-2.924l.01-.89-.636-.622a2.89 2.89 0 0 1 0-4.134l.637-.622-.011-.89a2.89 2.89 0 0 1 2.924-2.924l.89.01.622-.636a2.89 2.89 0 0 1 4.134 0l-.715.698a1.89 1.89 0 0 0-2.704 0l-.92.944-1.32-.016a1.89 1.89 0 0 0-1.911 1.912l.016 1.318-.944.921a1.89 1.89 0 0 0 0 2.704l.944.92-.016 1.32a1.89 1.89 0 0 0 1.912 1.911l1.318-.016.921.944a1.89 1.89 0 0 0 2.704 0l.92-.944 1.32.016a1.89 1.89 0 0 0 1.911-1.912l-.016-1.318.944-.921a1.89 1.89 0 0 0 0-2.704l-.944-.92.016-1.32a1.89 1.89 0 0 0-1.912-1.911l-1.318.016z"/>
+</svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-4 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                Reedemed Point</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">℗{{ reedemed_point }}</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-gift" viewBox="0 0 16 16">
+  <path d="M3 2.5a2.5 2.5 0 0 1 5 0 2.5 2.5 0 0 1 5 0v.006c0 .07 0 .27-.038.494H15a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 1 14.5V7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h2.038A2.968 2.968 0 0 1 3 2.506V2.5zm1.068.5H7v-.5a1.5 1.5 0 1 0-3 0c0 .085.002.274.045.43a.522.522 0 0 0 .023.07zM9 3h2.932a.56.56 0 0 0 .023-.07c.043-.156.045-.345.045-.43a1.5 1.5 0 0 0-3 0V3zM1 4v2h6V4H1zm8 0v2h6V4H9zm5 3H9v8h4.5a.5.5 0 0 0 .5-.5V7zm-7 8V7H2v7.5a.5.5 0 0 0 .5.5H7z"/>
+</svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-4 col-md-6 mb-4">
+                            <div class="card border-left-info shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Reedemed Reward
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ reedemed_award_count }}</div>
+                                                </div>
+<!--                                                <div class="col">-->
+<!--                                                    <div class="progress progress-sm mr-2">-->
+<!--                                                        <div class="progress-bar bg-info" role="progressbar"-->
+<!--                                                            style="width: 100%" aria-valuenow="50" aria-valuemin="0"-->
+<!--                                                            aria-valuemax="100"></div>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-graph-up-arrow" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M0 0h1v15h15v1H0V0Zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5Z"/>
+</svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pending Requests Card Example -->
+<!--                        <div class="col-xl-3 col-md-6 mb-4">-->
+<!--                            <div class="card border-left-warning shadow h-100 py-2">-->
+<!--                                <div class="card-body">-->
+<!--                                    <div class="row no-gutters align-items-center">-->
+<!--                                        <div class="col mr-2">-->
+<!--                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">-->
+<!--                                                Pending AWARD</div>-->
+<!--                                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>-->
+<!--                                        </div>-->
+<!--                                        <div class="col-auto">-->
+<!--                                            <i class="fas fa-comments fa-2x text-gray-300"></i>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+                    </div>
+
+                    <!-- Content Row -->
+
+                    <div class="row">
+
+                        <!-- Area Chart -->
+
+
+                        <!-- Pie Chart -->
+                        <div class="col-xl-12 col-lg-12">
+
+                                <!-- Card Header - Dropdown -->
+
+                                <!-- Card Body -->
+                                <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h5 class="m-0 font-weight-bold text-primary">Incomplete Redemption</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Reward</th>
+                                            <th>Status</th>
+                                            <th>Updated Date</th>
+                                            <th>Acknowledge By</th>
+
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                    {% for reward in redeem_list %}
+                                        <tr>
+                                            <td>{{ reward.gift }}</td>
+                                            <td>
+                                             {% if reward.status == "Processing" %}
+
+                                              <span class="spinner-border spinner-border-sm text-primary" role="status" aria-hidden="true"></span>
+                                              <span class="text-primary">{{ reward.status }}...</span>
+
+                                            {% else  %}
+                                                <span class="text-danger">{{ reward.status }}</span>
+
+                                            {% endif %}
+                                            </td>
+                                            <td>{{ reward.updated_date }}</td>
+                                            <td>{{ reward.acknowledgeby }}</td>
+                                        </tr>
+                                    {% endfor %}
+
+
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                        </div>
+                    </div>
+                     <div class="row">
+
+                        <!-- Area Chart -->
+
+
+                        <!-- Pie Chart -->
+                        <div class="col-xl-12 col-lg-12">
+                                <!-- Card Header - Dropdown -->
+
+                                <!-- Card Body -->
+                                <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h5 class="m-0 font-weight-bold text-primary">Point History</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable2" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Point </th>
+                                            <th>Point Description</th>
+                                            <th>Date Received</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        {% for point_obj in point_objs %}
+                                        <tr>
+                                            <td>{{ point_obj.point }}</td>
+                                            <td>{{ point_obj.action }}</td>
+                                            <td>{{ point_obj.point_date }}</td>
+
+                                        </tr>
+                                    {% endfor %}
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Your Website 2021</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% load static %}
+
+
+    <!-- Bootstrap core JavaScript-->
+<!--    <script src="{% static 'dashboard/vendor/jquery/jquery.min.js' %}"></script>-->
+<!--    <script src="{% static 'dashboard/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>-->
+
+<!--    &lt;!&ndash; Core plugin JavaScript&ndash;&gt;-->
+<!--    <script src="{% static 'dashboard/vendor/jquery-easing/jquery.easing.min.js' %}"></script>-->
+
+<!--    &lt;!&ndash; Custom scripts for all pages&ndash;&gt;-->
+<!--    <script src="js/sb-admin-2.min.js"></script>-->
+
+<!--    &lt;!&ndash; Page level plugins &ndash;&gt;-->
+<!--    <script src="{% static 'dashboard/vendor/datatables/jquery.dataTables.min.js' %} "></script>-->
+<!--    <script src="{% static 'dashboard/vendor/datatables/dataTables.bootstrap4.min.js' %} "></script>-->
+
+<!--    &lt;!&ndash; Page level custom scripts &ndash;&gt;-->
+<!--    <script src="{% static 'dashboard/js/demo/datatables-demo.js' %}"></script>-->
+
+</body>
+
+{% endblock %}

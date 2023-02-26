@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if form.errors %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong><p> Update Successfully....</p></strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+{% endif %}
+<div class="container">
+
+
+        <div class="shadow p-4 mb-5 bg-body rounded">
+            <div class="row">
+                <h1 class="m-0 font-weight-bold text-primary">Awards</h1>
+<!--                {% if user.is_staff %}-->
+<!--                <a class="btn btn-success col-md-1 btn-sm" href="{% url 'add_award' %}">Add Award</a>-->
+<!--                {% endif %}-->
+            </div>
+        <br></br>
+
+            <form method="POST">
+                {% csrf_token %}
+                <div class="table-responsive">
+                    <table class="table table-stripped table-bordered" width="100%">
+                        <thead>
+                            <th>Award</th>
+                            <th>Point</th>
+                            {% if user.is_staff %}
+                                <th>Delete</th>
+                            {% endif %}
+                        </thead>
+                        <tbody>
+
+                            {% for award in award_list %}
+                            <tr>
+                                <td>  {% if user.is_staff %}
+                                        <a  style="color:{{ award.color_code }};" href="{% url 'edit_award' award.id %}"><h6>{{ award.award_name }}</h6></a>
+                                        {% else %}
+                                       <h6 style="color:{{ award.color_code }};">{{ award.award_name }}</h6>
+                                      {% endif %}
+                                     </td>
+                                <td> {{ award.award_point }}</td>
+                                {% if user.is_staff %}
+                                <td>
+                                    {% if award.award_name == 'Login Award' %}
+                                    <a  class="btn btn-outline-danger disabled" href="{% url 'delete_award' award.id %}">
+                                    {% else %}
+                                    <a  class="btn btn-outline-danger" href="{% url 'delete_award' award.id %}">
+                                    {% endif  %}
+
+                <svg  width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"></path>
+  <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"></path>
+</svg>
+
+              </a>
+
+                                </td>
+                                {% endif %}
+                            </tr>
+                            {% endfor %}
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </form>
+        </div>
+
+{% endblock %}
+</div>

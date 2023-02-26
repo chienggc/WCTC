@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+ {% if user.is_authenticated %}
+    <div class="shadow p-4 mb-10 bg-body rounded">
+        <h1 class="m-0 font-weight-bold text-primary">Add Reward</h1>
+        <br></br>
+
+            {% if submitted%}
+                Your Product is submitted successfully!!!
+            {% else %}
+
+                <form action="" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+
+                    <input type="submit" value="Submit" class="btn btn-success">
+
+                </form>
+
+            {% endif%}
+        {% else %}
+        <strong> Please login to proceed!!! </strong>
+        {% endif %}
+
+    </div>
+
+{% endblock %}

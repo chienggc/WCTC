@@ -1,0 +1,6 @@
+.rainbow-text {
+  background-image: linear-gradient(to left, violet, DodgerBlue, skyblue, green, yellow, orange, red);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+

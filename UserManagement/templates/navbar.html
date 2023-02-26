@@ -1,0 +1,72 @@
+
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'wctc.css' %}">
+<script src="{% static 'myfirst.js' %}"></script>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-gradient-dark py-2">
+  <div class="container-fluid">
+      {% if user.is_authenticated %}
+      {% endif %}
+    <a class="navbar-brand rainbow-text" href="{% if user.is_authenticated %}
+    {% url 'dash_board' %}
+    {% else %}
+        {% url 'user_login' %}
+      {% endif %}"><h4>World Class Cheers Award</h4></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+<!--        <li class="nav-item">-->
+<!--          <a class="nav-link active" aria-current="page" href="{% url 'list-products' %}">{{request.user.is_staff}}</a>-->
+<!--        </li>-->
+          {% if user.is_authenticated %}
+        <li class="nav-item dropdown">
+          <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <h5 class="m-0  dropdown-toggle">Profile </h5>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'edit_profile' %}"><h6 class="m-0 font-weight">Edit Profile</h6></a></li>
+              {% if request.user.is_staff %}
+            <li><a class="dropdown-item" href="{% url 'list_profile' %}"><h6 class="m-0 font-weight">List Profile</h6></a></li>
+              {% endif %}
+          </ul>
+        </li>
+         <li class="nav-item dropdown">
+          <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <h5 class="m-0  dropdown-toggle">Award </h5>
+          </a>
+          <ul class="dropdown-menu">
+              {% if request.user.is_staff %}
+              <li><a class="dropdown-item" href="{% url 'add_award' %}"><h6 class="m-0 font-weight">Add</h6></a></li>
+              {% endif %}
+              <li><a class="dropdown-item" href="{% url 'list_award' %}" role="button"  aria-expanded="false"><h6 class="m-0 font-weight">Listing</h6></a></li>
+              <li><a class="dropdown-item" href="{% url 'list_redemption' %}"><h6 class="m-0 font-weight">Redemption History</h6></a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <h5 class="m-0  dropdown-toggle">Reward </h5>
+          </a>
+          <ul class="dropdown-menu">
+              {% if request.user.is_staff %}
+              <li><a class="dropdown-item" href="{% url 'add-product' %}"><h6 class="m-0 font-weight">Add</h6></a></li>
+              {% endif %}
+              <li><a class="dropdown-item" href="{% url 'list-products' %}"><h6 class="m-0 font-weight">Listing</h6></a></li>
+
+          </ul>
+        </li>
+          {% endif %}
+
+      </ul>
+      <form class="d-flex" role="search">
+<!--        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">-->
+        <a class="" href="{% url 'user_logout' %}" type="submit"></a>
+          {% if user.is_authenticated %}
+        <a class="btn btn-outline-success" href="{% url 'user_logout' %}" type="submit"><h5 class="m-0 font-weight">Logout</h5></a>
+          {% endif %}
+      </form>
+    </div>
+  </div>
+</nav>

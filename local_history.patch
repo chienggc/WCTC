@@ -1,0 +1,13 @@
+Index: members/views.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/members/views.py b/members/views.py
+--- a/members/views.py	
++++ b/members/views.py	(date 1671022397134)
+@@ -58,3 +58,4 @@
+     def get_object(self):
+         return self.request.user
+ 
++

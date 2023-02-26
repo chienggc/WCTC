@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+ {% if user.is_authenticated %}
+    <div class="shadow p-4 mb-10 bg-body rounded">
+        <h1 class="h1 mb-0 text-gray-900">Update Awards</h1>
+        </br>
+        <form action="" method="POST" >
+                 {% csrf_token %}
+                 {{ form.as_p }}
+
+            <input type="submit" value="Update" class="btn btn-success">
+        </form>
+        {% else %}
+            <strong> Please login to proceed!!! </strong>
+        {% endif %}
+
+    </div>
+{% endblock %}
